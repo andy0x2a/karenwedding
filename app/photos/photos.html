@@ -1,0 +1,26 @@
+<H2> Photos</H2>
+
+<div ng-show="isFullscreen"
+      class="big-image-container" 
+     tabindex="0"
+      id="fullscreen"
+     key-event-pressed>
+
+    <h1 style="float: right; margin-left:-25px; cursor:pointer">
+        <i class="glyphicon glyphicon-remove" ng-click="hideImage()"> </i>
+    </h1>
+    <img src="{{currentPhoto.url}}" class="big-img" tabindex="3" />
+</div>
+
+<div style="display:inline-block" tabindex="5">
+
+    <div ng-repeat="photo in photoTemplates.photos" 
+         class="photo-thumb-container" 
+         ng-hide="isFullscreen" 
+         tabindex="{{photo.tabindex}}">
+        <img src="{{ photo.thumb}}" 
+             class="photo-thumb"
+              ng-click="showImage(photo)" 
+             tabindex="{{photo.tabindex+1}}" />
+    </div>
+</div>

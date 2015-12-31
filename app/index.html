@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+ <!--<![endif]-->
+<head>
+    <script type="text/javascript">
+        appVersion = ".01";
+
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Emily and Andy Wedding RSVP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+     -->
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/directions.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+    <link rel="stylesheet" href="css/wedding.css">
+    <link rel="stylesheet" href="css/photos.css">
+
+
+</head>
+<body class='bg'>
+
+    <div class="navbar navbar-fixed-top navbar-wedding" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div style="float:left"><h2 class=" sideHamburger glyphicon glyphicon-menu-hamburger"></h2></div>
+                <div> <a class="navbar-brand navbar-wedding" href="#">Andy & Emily 2016</a></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class=" sidebar sidebar-wedding">
+        <ul class="nav nav-sidebar">
+            <li><a class="menuItem" href="#">Home</a></li>
+            <li><a class="menuItem" href="#/rsvp">RSVP</a></li>
+            <li><a class="menuItem" href="#/photos">Photos</a></li>
+            <li><a class="menuItem" href="#/directions">Directions</a></li>
+            <li><a class="menuItem" href="#/registry">Registry</a></li>
+            <li><a class="menuItem" href="#/about">About</a></li>
+            <li><a class="menuItem" href="#/contact">Contact</a></li>
+        </ul>
+
+    </div>
+
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-view class=" main-wedding" style="margin-left:120px"></div>
+
+
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="rsvp/constants.js"></script>
+    <script src="rsvp/modal.js"></script>
+    <script src="service/service.js"></script>
+    <script src="rsvp/filters.js"></script>
+    <script src="welcome/welcome.js"></script>
+    <script src="rsvp/rsvp.js"></script>
+    <script src="photos/photos.js"></script>
+    <script src="photos/keyEventPressed.js"></script>
+    <script src="registry/registry.js"></script>
+    <script src="about/about.js"></script>
+    <script src="directions/directions.js"></script>
+    <script src="contact/contact.js"></script>
+    <script src="admin/admin.js"></script>
+   <!-- <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script> -->
+    <!--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDKm8fUaNGFhpwRJORfxqs4wOaMwjMscaI"></script>-->
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".sideHamburger").on('click', function () {
+                $(".sidebar").toggle();
+            });
+            $(".menuItem").on('click', function () {
+                if ($(".sideHamburger").is(':visible')) {
+                    $(".sidebar").hide();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

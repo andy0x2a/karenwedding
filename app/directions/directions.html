@@ -1,0 +1,37 @@
+<div  class="maincontent salmon">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10413.921042122196!2d-123.2198192454688!3d49.267296328381775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x8c5ea9da7ae025f4!2sUniversity+Golf+Club!5e0!3m2!1sen!2sca!4v1449083224973" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+  <!--   <div id="googleMap" style=""></div> -->
+
+
+</div>
+<div class="maincontent salmon">
+    <span> Hotels:</span>
+    <ul class="hotelList">
+        <li ng-repeat=" hotel in hotels">
+            <span class="title" ng-click="showHotel(hotel)" ng-bind="hotel.title"> </span>
+            <div class="info " ng-show="hotel.show">
+                <p>{{hotel.address1}}</p>
+                <p>{{hotel.address2}}</p>
+                <p>
+                    <a href="{{hotel.url}}"> Website</a>
+                </p>
+                <p>
+                 {{phone}}
+                </p>
+
+
+            </div>
+        </li>
+        </ul>
+</div>
+
+<div class="maincontent salmon">
+    <span> Taxis:</span>
+    <ul class="leftJ">
+        <li ng-repeat="taxi in taxis">
+            {{taxi.name}}:{{taxi.phone}}
+        </li>
+       
+    </ul>
+</div>

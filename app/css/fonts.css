@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'MTCORSVA';
+
+    src: url('/fonts/MTCORSVA.eot');
+    src: local('MTCORSVA'), url('/fonts/MTCORSVA.ttf') format('truetype');
+}
+.corsva{
+    font-family: 'MTCORSVA';
+}
+
+
+@font-face {
+    font-family: 'CASTELAR';
+
+    src: url('/CASTELAR.eot');
+    src: local('CASTELAR'), url('/fonts/CASTELAR.ttf') format('truetype');
+}
+.castelar {
+    font-family: 'CASTELAR';
+    font-size: 40px;
+}

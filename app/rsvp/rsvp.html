@@ -1,0 +1,143 @@
+
+
+
+<div class="">
+  <div>
+
+          <!--guestFound: {{guestFound}}<br/>
+          isValid: {{isValid(guest)}} <br/>
+          guest: {{guest}} <br/>
+          guestStatus: {{guest.status}} <br/>
+          members: {{guest.members}} <br/>
+      family: {{debugFamily}} <br />
+      Used Members: {{guest.members.length}}
+      Total Members:{{guest.maxMembers}}-->
+
+      </div> 
+    <div class="rsvp-container salmon">
+        <form name="myForm"  autocomplete="off" >
+            <div class="row2" style="width:80%; margin:0 auto">
+                <div class="">
+                    <label for="guestName"> Guest: </label>
+                    <input ng-show="!guestFound" 
+                           class="guest-name"
+                            type="text"
+                            id="guestName" 
+                           name="guestName" 
+                           ng-model="guestSearch"
+                            ng-disabled="pruned.length ==-1 " 
+                           ng-change="searchForGuest()"
+                             ng-keydown="searchKeyPressed($event)"
+                           >
+                    <span ng-model="guest.name" ng-show="guestFound" style="white-space:nowrap;"> {{guest.name}} </span>
+                    <div style="border: 1px solid; width:300px; z-index:10; position:absolute" ng-show="pruned.length >=1 && pruned.length <8">
+                        <div ng-repeat="g in pruned" 
+                             class="rsvp-select" 
+                             ng-click="guestListClicked(g)"
+                             ng-class="{hovered: g.highlighted}"
+                             >
+                            <span class="rsvp-select-element">{{g.name}}</span><br>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="!guestFound">
+
+                        <div class="">
+                            <label>
+                                <input type="radio" ng-model="guest.status" value="attending" class="attendingRadio">
+                                Attending
+                            </label>
+                            <label>
+                                <input type="radio" ng-model="guest.status" value="declined">
+                                Not attending
+                            </label>
+                            <br>
+                        </div>
+
+                    </div>
+
+
+                    <div ng-repeat="member in guest.members" class="memberEntry">
+                        <div ng-show="member.id">
+
+                            <label for="plusOne">Guest: </label>
+                            <span name="plusOne" style="white-space:nowrap; width:80%">{{member.name}}</span>
+                            <!-- <input type="text" id="plusOne"  ng-disabled="true" name="plusOneName" ng-model="member.name"> -->
+                            <!--<span name="plusOne" id="plusOne">{{plusOne}}</span>-->
+                            <div class="row">
+                                <div class="">
+
+                                    <label>
+                                        <input type="radio" ng-model="member.status" value="attending">
+                                        Attending
+                                    </label>
+                                    <label>
+                                        <input type="radio" ng-model="member.status" value="declined">
+                                        Not attending
+                                    </label><br />
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div ng-hide="member.id">
+
+                            <label for="plusOneName">Guest: </label>                         
+                            <input type="text" id="plusOneName" name="plusOneName" ng-model="member.name"
+                                   style="width:100%; max-width:150px">
+                            <div class="row">
+                                <div class="">
+
+                                    <label>
+                                        <input type="radio" ng-model="member.status" value="attending">
+                                        Attending
+                                    </label>
+                                    <label>
+                                        <input type="radio" ng-model="member.status" value="declined">
+                                        Not attending
+                                    </label><br />
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="">
+                            <button id="submitBtn"
+                                    class="btn btn-primary submit-button"
+                                    ng-click="submit()"
+                                    ng-disabled="!isValid(guest)"
+                                    style="width:50%; min-width:70px; margin-top:10px; margin-bottom:10px">
+                                Submit
+                            </button>
+                            <button class="btn btn-primary"
+                                    ng-click="reload()"
+                                    style="min-width:70px">
+                                Clear
+                            </button>
+
+
+                        </div>
+
+                    </div>
+        </form>
+
+    </div>
+</div>
+<modal-dialog show='modalShown' show-buttons="true" width='100px' on-submit-function='submittoapi' >
+    <ul>
+        <div ng-repeat="guestMessage in modalGuestMessges">
+            <li style='list-style-type:none'><span>{{guestMessage}} </span></li>
+        </div>
+    </ul>
+    {{modalMessage}}
+
+</modal-dialog>
+<modal-dialog show='showThankYou' width='100px'  show-buttons="false"  on-submit-function='closeModals'>
+    {{thankYouMessage}}
+    <div style="margin:20px auto 10px auto; width:50%">
+        <button class="btn btn-primary" ng-click="closeModal()"> OK</button>
+    </div>
+</modal-dialog>

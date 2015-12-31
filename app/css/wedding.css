@@ -1,0 +1,324 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+}
+.bg {
+    background-image: url("/img/bg_flowers.jpg");
+    height: 1000px;
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    background-size: cover  ;
+    /*margin-left: 5px;*/
+    /*margin-right:10px*/
+    /*width:1001px;*/
+}
+
+.navbar-wedding {
+    background-color: purple;
+    color: white;
+    opacity: 0.6;
+}
+
+.wedding-vertical-center {
+  min-height: 30%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 30vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.navbar-wedding-countdown {
+    background-color: purple;
+    color: white;
+    opacity: 0.6;
+   /*float:right;*/
+   position: absolute;
+   right: 0;
+
+
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.hidden {
+    display: none;
+}
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+    border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Mobile Sidebar, bigger than regular? */
+.sidebar-wedding {
+    background-color: lavender;
+    opacity:  .8;
+   
+}
+.sidebar {
+    
+
+     position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+       
+
+}
+
+.sideHamburger {
+    display: none;
+}
+
+
+
+@media (max-width: 500px) {
+
+.sidebar {
+    display: none;
+     z-index:50;
+     font-size: 30px;
+     width:200px;
+
+
+}
+.sidebar-wedding {
+    background-color: lavender;
+    opacity:  1;
+   
+}
+
+    .sideHamburger {
+        display: block;
+        cursor:pointer;
+        }
+
+}
+
+
+@media (min-width: 500px) {
+    .sidebar {
+        display: block;
+
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+/*z-index:50;*/
+    }
+
+
+
+}
+
+
+/* Sidebar navigation */
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+    padding: 20px;
+}
+
+    .presented {
+
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    /*max-width: 400px;*/
+        width:85%;
+        max-width: 800px;
+        min-width: 300px;
+    opacity: .8;
+    height: 350px;
+    line-height: 350px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family:  sans-serif;
+    font-weight: 700;
+
+}
+
+.maincontent {
+
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    /*background-color: salmon;*/
+    /*max-width: 400px;*/
+    width:85%;
+    max-width: 800px;
+    min-width: 300px;
+    opacity: .8;
+    /*height: 350px;*/
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    font-family: sans-serif;
+    font-weight: 100;
+    padding:10px;
+
+}
+
+.veryStrong {
+    font-size: 21px;
+}
+.salmon {
+    background-color: lavender;
+}
+
+/*@media (max-width: 768px) {*/
+    /*.presented {*/
+        /*width:85%;*/
+    /*}*/
+
+/*}*/
+/*@media (min-width: 768px) {*/
+    /*.presented {*/
+        /*width:400px;*/
+    /*}*/
+
+/*}*/
+.main-wedding {
+
+}
+
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.placeholders h4 {
+    margin-bottom: 0;
+}
+.placeholder {
+    margin-bottom: 20px;
+}
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+/*
+#countdown {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}*/
+
+.attendingRadio {
+
+}
+
+
+.rsvp-container {
+
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    /*background-color: salmon;*/
+    /*max-width: 400px;*/
+    /*width:85%;*/
+    max-width: 400px;
+    min-width: 150px;
+    opacity: .8;
+    /*height: 350px;*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*font-size: 18px;*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    font-family: sans-serif;
+    font-weight: 100;
+    padding:10px 10px 10px 25px;
+
+}
+.rsvp-select{
+    cursor:pointer; 
+    border-bottom:1px solid;
+    background-color: white;
+}
+.rsvp-select-element:hover {
+    background-color:#f2f2f2;
+}
+.memberEntry {
+    margin-top:12px;
+}
+
+.guest-name {
+    max-width:100%;
+}
+.hovered {
+    background-color:#c7c7c7;
+}

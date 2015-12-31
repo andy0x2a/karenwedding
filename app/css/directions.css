@@ -1,0 +1,44 @@
+#googleMap {
+    display: block;
+    max-width: 600px;
+    width:90%;
+    height: 400px;
+    /*margin-left: -100px;*/
+
+border-radius: 10px;
+border-style: solid;
+border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hotelList li span {
+    cursor: pointer;
+
+}
+.hotelList li {
+    text-align: left;
+    color: rgb(51, 51, 51);
+}
+.title:hover {
+    color: #428bca;
+}
+
+.shownOnMap {
+    color: #105cb6;
+
+}
+
+
+.leftJ {
+    text-align: left;
+}
+
+.info {
+    padding-left: 10px;
+}
+
+.info p {
+    margin-top: 5px;
+    line-height: 10px;
+}

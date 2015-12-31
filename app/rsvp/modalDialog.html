@@ -1,0 +1,13 @@
+
+<div class='ng-modal' ng-show='show'>
+    <div class='ng-modal-overlay' ng-click='hideModal()'></div>
+    <div class='ng-modal-dialog' style='border-radius: 10px; border-style: solid; border-width: 2px; width:325px'>
+        <div class='ng-modal-close' ng-click='hideModal()'>X</div>
+        <div class='ng-modal-dialog-content' ng-transclude></div>
+        <div style="margin:0 auto 10px auto; width:70%" ng-show="showButtons">
+            <button class="btn btn-primary" ng-click="doSubmit()"> Submit </button>
+            <button class="btn btn-primary" ng-click="hideModal()"> Cancel </button>
+        </div>
+
+    </div>
+</div>
