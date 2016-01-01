@@ -33,7 +33,7 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
             alert("something went wrong, please reload the page and try again. If this problem persists, contact Andy");
         });
     }
-    $scope.loadAllFamilies();
+   // $scope.loadAllFamilies();
 
     $scope.attendingStatus = function (guest) {
         if (typeof (guest.status) !== "undefined" && guest.status !== null) {
