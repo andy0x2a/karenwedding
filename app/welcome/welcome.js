@@ -25,8 +25,8 @@ $scope.changePhoto = function() {
 $scope.init = function() {
 	$scope.getImages();
 	   window.scrollTo(0,0);
-	   $interval(function() {$scope.changePhoto();}, 3000 );
-	   
+	   $interval(function() {$scope.changePhoto();}, 5000 );
+
 }
 
 $scope.getImages = function() {
