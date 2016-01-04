@@ -18,7 +18,9 @@ body {
 }
 
 .navbar-wedding {
-    background-color: purple;
+    /*background-color: purple;*/
+    background-color: rgb(95,1,1);
+
     color: white;
     opacity: 0.6;
 }
@@ -68,7 +70,8 @@ body {
 
 /* Mobile Sidebar, bigger than regular? */
 .sidebar-wedding {
-    background-color: lavender;
+/*    background-color: rgb(76,83,89);*/
+background-color: rgb(95,1,1);
     opacity:  .8;
    
 }
@@ -82,7 +85,8 @@ body {
         padding: 20px;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
+           /* background-color: #f5f5f5;*/
+        background-color: rgb(95,1,1);
         border-right: 1px solid #eee;
        
 
@@ -105,7 +109,7 @@ body {
 
 }
 .sidebar-wedding {
-    background-color: lavender;
+    background-color: rgb(76,83,89);
     opacity:  1;
    
 }
@@ -129,7 +133,8 @@ body {
         padding: 20px;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
+       /* background-color: #f5f5f5;*/
+       background-color: rgb(95,1,1);
         border-right: 1px solid #eee;
 /*z-index:50;*/
     }
@@ -215,7 +220,9 @@ body {
     font-size: 21px;
 }
 .salmon {
-    background-color: lavender;
+    background-color: rgb(76,83,89);
+    color:white;
+ /*  background-color: rgb(95,1,1);*/
 }
 
 /*@media (max-width: 768px) {*/
@@ -321,4 +328,13 @@ body {
 }
 .hovered {
     background-color:#c7c7c7;
+}
+
+.centeredImg {
+
+        margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+    max-width:600px;
+    display: block;
 }

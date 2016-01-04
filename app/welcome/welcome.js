@@ -9,9 +9,52 @@ angular.module('myApp.welcome', ['ngRoute'])
   });
 }])
 
-.controller('welcomeController', [function() {
+.controller('welcomeController', ['$scope', '$rootScope', '$filter', '$interval', function($scope, $rootScope, $filter, $interval) {
 
+$scope.changePhoto = function() {
+	console.log("Changing Photo");
 
-      window.scrollTo(0,0);
+	if ($scope.currentPhotoIndex >= $scope.photos.length -1) {
+		$scope.currentPhotoIndex = 0;
+	} else {
+		$scope.currentPhotoIndex++;
+	}
 
+}
+
+$scope.init = function() {
+	$scope.getImages();
+	   window.scrollTo(0,0);
+	   $interval(function() {$scope.changePhoto();}, 3000 );
+	   
+}
+
+$scope.getImages = function() {
+	   $scope.galleryLocation = "/img/gallery/";
+	$scope.photos = [
+		{
+		 name:"black&white.jpg"		
+		},
+		{
+		 name:"hug.jpg"		
+		},
+		{
+		 name:"hug2.jpg"		
+		},
+		{
+		 name:"Ring.jpg"		
+		},
+		{
+		 name:"Savethedate.jpg"		
+		}
+	];
+
+	angular.forEach($scope.photos, function(photo, idx) {
+ 		photo.src = $scope.galleryLocation + "" + photo.name;
+ 		 photo.index = idx;
+	});
+	$scope.currentPhotoIndex = 0;
+};
+
+	$scope.init();   
     }]);
