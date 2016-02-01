@@ -8,7 +8,7 @@ angular.module('myApp.service', [])
     var _getAllFamilies = function () {
         var req = {
             method: 'GET',
-            url: constants.config.apiBase + '/family/'
+            url: constants.config.apiBase + '/family/' + constants.config.weddingId + "/"
 
         };
         return $http(req);
@@ -16,7 +16,7 @@ angular.module('myApp.service', [])
     var _getAllGuests = function (password) {
         var req = {
             method: 'GET',
-            url: constants.config.apiBase + '/admin/guests/',
+            url: constants.config.apiBase + '/admin/' + constants.config.weddingId + '/guests/',
             headers: {
                 'adminPass': password
             },
@@ -26,18 +26,44 @@ angular.module('myApp.service', [])
     var _doLogin = function (password) {
         var req = {
             method: 'GET',
-            url: constants.config.apiBase + '/admin/login/',
+            url: constants.config.apiBase + '/admin/' + constants.config.weddingId + '/login/',
             headers: {
                 'adminPass': password
             },
         };
         return $http(req);
     };
+    var _deleteGuest = function (password, id) {
+        var req = {
+            method: 'DELETE',
+            url: constants.config.apiBase + '/admin/' + constants.config.weddingId + '/guests/' + id,
+            headers: {
+                'adminPass': password
+            },
 
-    var _submitGuests = function (requestData) {
+        };
+        return $http(req);
+    }
+
+    var _addFamily = function (password, family) {
         var req = {
             method: 'POST',
-            url: constants.config.apiBase + '/rsvp/updateList',
+            url: constants.config.apiBase + '/admin/' + constants.config.weddingId + '/family/',
+            data: family,
+            headers: {
+                'adminPass': password
+            },
+
+        };
+        return $http(req);
+    }
+    var _submitGuests = function (requestData, isAdmin) {
+
+        var adminSegment = (typeof(isAdmin)!=="undefined")?true:false;
+
+        var req = {
+            method: 'POST',
+            url: constants.config.apiBase + '/rsvp/' + constants.config.weddingId + '/updateList?' + "admin="+adminSegment,
             data: requestData
 
         };
@@ -93,6 +119,8 @@ angular.module('myApp.service', [])
         submitGuests: _submitGuests,
         getPhotos: _getPhotos,
         getAllGuests: _getAllGuests,
+        deleteGuest: _deleteGuest,
+        addFamily: _addFamily,
         doLogin: _doLogin
     }
 }]);

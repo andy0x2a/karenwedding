@@ -15,6 +15,7 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
     $scope.names = [];
     $scope.searchCtr = 0;
     $scope.loadAllFamilies = function () {
+        $scope.isLoading = true;
         var task = api.getAllFamilies();
         task.then(function (data) {
 
@@ -31,9 +32,11 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
 
         }, function (error) {
             alert("something went wrong, please reload the page and try again. If this problem persists, contact Andy");
+        }).finally(function() {
+             $scope.isLoading = false;
         });
     }
-   // $scope.loadAllFamilies();
+    $scope.loadAllFamilies();
 
     $scope.attendingStatus = function (guest) {
         if (typeof (guest.status) !== "undefined" && guest.status !== null) {
@@ -168,7 +171,9 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
         modalGuestMessges.push($scope.guest.name + " is " + $scope.guest.status);
 
         angular.forEach($scope.guest.members, function (member) {
+            if (typeof(member.name ) !=="undefined") {
             modalGuestMessges.push(member.name + " is " + member.status);
+            }
         });
         //window.confirm(message);
         $scope.modalGuestMessges = modalGuestMessges;
@@ -180,16 +185,19 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
         allMembersToSubmit.push($scope.guest);
 
         angular.forEach($scope.guest.members, function (member) {
+            if (typeof(member.name ) !=="undefined") {
             allMembersToSubmit.push(member);
+            }
         });
 
       
         var task = api.submitGuests(allMembersToSubmit);
         task.then(function () {
-            $scope.thankYouMessage = "RSVP confirmed. Thank you"
-
+            $scope.showThanksSuccess = true;
+            $scope.showThanksFail = false;
         }, function () {
-            $scope.thankYouMessage = "Uh oh, something went wrong, please reload the page and try again. If the problem persists, please contact Andy";
+            $scope.showThanksFail = true;
+            $scope.showThanksSuccess = false;
            
         }).finally(function () {
             $scope.modalShown = false;
@@ -218,7 +226,7 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
         };
         angular.forEach(guest.members, function (member) {
             console.log(member.name + " " + member.status);
-            if (!isValidAttending(member.status)) {
+            if ( typeof(member.name) !=="undefined" && !isValidAttending(member.status)) {
                 isValid = false;
             }
         });
@@ -236,6 +244,8 @@ angular.module('myApp.rsvp', ['ngRoute', 'myApp.startsWith', 'myApp.service'])
     }
     $scope.closeModal = function () {
         $scope.showThankYou = false;
+        $scope.showThanksFail = false;
+        $scope.showThanksSuccess = false;
     }
     
 }]);

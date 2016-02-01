@@ -1,4 +1,13 @@
 <div style="margin-top:25px">
+    <div class="loadingcontainer" id="spinner" ng-show="isLoading">
+        <div class="loadingframe">
+            <i>
+                Loading...
+            </i>
+        </div>
+        
+    </div>
+    
  <modal-dialog show='showMessage' width='100px' show-buttons="false" on-close='closeModal'>
         {{message}}
         <div style="margin:20px auto 10px auto; width:50%">
@@ -12,20 +21,95 @@
             <input name="pwd" type="password" ng-model="adminPassword">
             <button class="btn btn-primary" ng-click="login()"> Login</button>
         </div>
+        <div class="a-table2" ng-show="isAuthorized && showGuests"  ng-disabled="!isAuthorized">
 
-        <div class="a-table" ng-show="isAuthorized && showGuests" ng-disabled="!isAuthorized">
-            <div ng-repeat="guest in guests" class="row" style="margin-bottom:10px">
-                <div class="col-sm-24">
-                    <label for="guestname"> Name: </label>
-                    <input ng-model="guest.name" name="guestName">
-                    <select name="singleSelect" id="singleSelect" ng-model="guest.status">
-                        <option value=""> </option> <!-- not selected / blank option -->
-                        <option value="attending">Attending</option> <!-- interpolation -->
-                        <option value="declined">Declined</option>
-                    </select><br>
+            <div >
+                <div>
+
+                    <label for="yesl"> Attending:</label>
+                    <span name="yesl"> {{stats.yes}}</span> 
                 </div>
+                <div>
+
+                    <label for="yesl"> Declined:</label>
+                    <span name="yesl"> {{stats.no}}</span> 
+                </div>
+                <div>
+
+                    <label for="yesl"> No Response:</label>
+                    <span name="yesl"> {{stats.noReply}}</span> 
+                </div>
+
+
+        </div>
+            <table ng-hide="showAddFamilyForm">
+                <thead>
+                    <tr>
+                     <th>
+                            ID  <i class="glyphicon glyphicon-filter" style="cursor:pointer" ng-click="doFilter('id')"> </i> 
+                        </th>
+                            
+                        <th>
+                            Name  <i class="glyphicon glyphicon-filter" style="cursor:pointer" ng-click="doFilter('name')"> </i> 
+                        </th>
+                            
+
+                        <th>
+                            Status <i class="glyphicon glyphicon-filter" style="cursor:pointer" ng-click="doFilter('status')"> </i> 
+                        </th>
+
+                        <th>
+                            Family <i class="glyphicon glyphicon-filter" style="cursor:pointer" ng-click="doFilter('family')"> </i> 
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="guest in guests | orderBy: orderExpr.order" class="trow"  style="margin-bottom:5px">
+                    <td>
+                            <span> {{guest.id}} </span>
+                        </td>
+                        <td>
+                            <input ng-model="guest.name" name="guestName">
+                        </td>
+                        <td>
+                            <select name="singleSelect" id="singleSelect" ng-model="guest.status">
+                                <option value=""> </option> <!-- not selected / blank option -->
+                                <option value="attending">Attending</option> <!-- interpolation -->
+                                <option value="declined">Declined</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="mySelect" id="mySelect"
+                                    ng-options="family.id as family.name for family in families "
+                                    ng-model="guest.familyId"></select>
+                        </td>
+                        <td>
+                           <button class="btn btn-primary" ng-click="deleteGuest(guest)">Delete</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <ng-form name="addFamilyForm" id="addFamilyForm" ng-show="showAddFamilyForm">
+                <label for="newFamilyName">Name</label>
+                <input type="text" name="newFamilyName" ng-model="newFamily.name">
+                <label for="newFamilySize">Size</label>
+                <input type="text" name="newFamilySize" ng-model="newFamily.familySize">
+                <button class="btn btn-primary" ng-click="addFamily(newFamily)" ng-disabled="isLoading"> Add</button>
+                <button class="btn btn-primary" ng-click="showAddFamilyForm = false">Cancel</button>
+
+                <br />
+            </ng-form>
+            <div  ng-hide="showAddFamilyForm">
+                <button class="btn btn-primary" ng-click="guests.push({}) " ng-disabled="isLoading"> Add Guest</button>
+                <button class="btn btn-primary" ng-click="showAddFamilyForm = true; newFamily = {} " ng-disabled="isLoading"> Add Family</button>
+                <button class="btn btn-primary" ng-click="submit()" ng-disabled="isLoading"> Submit </button>
             </div>
-            <button class="btn btn-primary" ng-click="submit()"> Submit </button>
+            
         </div>
 
     </form>
