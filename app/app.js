@@ -12,6 +12,7 @@ angular.module('myApp', [
   'myApp.rsvp',
   'myApp.photos',
   'myApp.registry',
+  'myApp.hotel',
   'myApp.contact',
   'myApp.directions',
    'myApp.about',

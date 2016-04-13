@@ -8,7 +8,7 @@ body {
 }
 
 .bg {
-    background-image: url("/img/bg_flowers.jpg");
+    /*background-image: url("/img/bg_flowers.jpg");*/
     height: 1000px;
     /*background-repeat: no-repeat;*/
     /*background-position: center;*/
@@ -16,6 +16,7 @@ body {
     /*margin-left: 5px;*/
     /*margin-right:10px*/
     /*width:1001px;*/
+        background-color:rgb(76,83,89);
 }
 
 .navbar-wedding {
@@ -242,6 +243,30 @@ body {
     font-family: sans-serif;
     font-weight: 100;
     padding: 10px;
+}
+.maincontent-left {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    /*background-color: salmon;*/
+    /*max-width: 400px;*/
+    width: 85%;
+    max-width: 800px;
+    min-width: 300px;
+    opacity: .8;
+    /*height: 350px;*/
+    /*text-align: center;*/
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    font-family: sans-serif;
+    font-weight: 100;
+    padding: 10px;
+}
+.kSpaced {
+    margin-bottom: 10px;
 }
 
 .veryStrong {
