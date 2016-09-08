@@ -16,7 +16,8 @@ angular.module('myApp.directions', ['ngRoute'])
 
     ];
     $scope.taxis = [
-  
+    {name:"Kami Cabs", phone:"250-374-9999"},
+    {name:"Yellow Cabs", phone:"250-374-3333"},
     ];
     $scope.showHotel = function (hotel) {
         hotel.show = !hotel.show;
